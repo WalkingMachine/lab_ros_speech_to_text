@@ -68,7 +68,9 @@ def main():
         for result in results:
             for alternative in result.alternatives:
                 msg = Speech_msg()
-                msg.text = str(alternative.transcript)
+                msg.text = alternative.transcript #  If you get errors, try to replace with the line bellow
+                #msg.text = str(alternative.transcript)
+
                 if alternative.confidence is not None:
                     msg.confidence = float(alternative.confidence)
                 else:
