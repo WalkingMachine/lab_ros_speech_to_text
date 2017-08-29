@@ -46,6 +46,8 @@ def main():
 
     rospy.init_node('stt_node')
     pub = rospy.Publisher('stt', Speech_msg, queue_size=10)
+    _language_code = rospy.get_param('language', 'en-US')
+
 
     while True:
         #restart the client and sample
@@ -60,13 +62,15 @@ def main():
             encoding=speech.Encoding.LINEAR16,
             sample_rate_hertz=16000)
         results = sample.streaming_recognize(
-            language_code='en-US',
+            language_code=_language_code,
             interim_results=True
         )
         for result in results:
             for alternative in result.alternatives:
                 msg = Speech_msg()
-                msg.text = str(alternative.transcript)
+                msg.text = alternative.transcript #  If you get errors, try to replace with the line bellow
+                #msg.text = str(alternative.transcript)
+
                 if alternative.confidence is not None:
                     msg.confidence = float(alternative.confidence)
                 else:

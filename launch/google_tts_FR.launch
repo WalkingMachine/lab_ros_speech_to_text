@@ -1,0 +1,4 @@
+<launch>
+    <param name="language" value="fr_CA"/>
+    <node name="tts" pkg="lab_ros_speech_to_text" type="stt.py"/>
+</launch>
