@@ -1,5 +1,5 @@
 <launch>
     <node name="tts" pkg="lab_ros_speech_to_text" type="stt.py">
-        <env name="GOOGLE_APPLICATION_CREDENTIALS" value="/home/jeffrey/flexbe_ws/src/lab_ros_speech_to_text/scripts/wm-speech.json" />
+        <env name="GOOGLE_APPLICATION_CREDENTIALS" value="$(find lab_ros_speech_to_text)/scripts/wm-speech.json" />
     </node>
 </launch>
